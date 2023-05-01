@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace 'com.infos.assistant'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.infos.assistant"
         minSdk 28
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
