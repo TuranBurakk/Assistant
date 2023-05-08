@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoFragment">
+    tools:context=".ui.todo_screen.TodoFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -16,6 +16,7 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/todo_row"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -24,9 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:text="Today"
+        android:text="@string/today"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:text="Hide completed"
+        android:text="@string/hide_completed"
         android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

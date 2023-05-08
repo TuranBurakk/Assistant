@@ -2,4 +2,18 @@
     <string name="app_name">Assistant</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="explanation">Explanation</string>
+    <string name="add">Add</string>
+    <string name="todo_title">TODO TITLE</string>
+    <string name="todo_explanation">TODO EXPLANATION</string>
+    <string name="todo_date">TODO DATE</string>
+    <string name="password">Password</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sign_in_with_google">SIGN IN WITH GOOGLE</string>
+    <string name="client_id">4546779358–8iq35757mucvh59k3ldbpaj161dhkjdr.apps.googleusercontent.com</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="today">Today</string>
+    <string name="hide_completed">Hide completed</string>
 </resources>

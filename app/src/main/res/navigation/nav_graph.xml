@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -11,14 +11,18 @@
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountingFragment"
         android:name="com.infos.assistant.AccountingFragment"
         android:label="fragment_accounting"
-        tools:layout="@layout/fragment_accounting" />
+        tools:layout="@layout/fragment_accounting" >
+        <action
+            android:id="@+id/action_accountingFragment_to_addAccountingFragment"
+            app:destination="@id/addAccountingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.infos.assistant.CalendarFragment"
@@ -45,11 +49,33 @@
     </fragment>
     <fragment
         android:id="@+id/todoFragment"
-        android:name="com.infos.assistant.TodoFragment"
+        android:name="com.infos.assistant.ui.todo_screen.TodoFragment"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" >
         <action
             android:id="@+id/action_todoFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_todoFragment_to_addTodoFragment"
+            app:destination="@id/addTodoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAccountingFragment"
+        android:name="com.infos.assistant.AddAccountingFragment"
+        android:label="fragment_add_accounting"
+        tools:layout="@layout/fragment_add_accounting" />
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="com.infos.assistant.ui.add_todo_screen.AddTodoFragment"
+        android:label="fragment_add_todo"
+        tools:layout="@layout/fragment_add_todo" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.infos.assistant.ui.login_screen.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
