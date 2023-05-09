@@ -44,6 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/addTodoButton"
         android:layout_width="38dp"
         android:layout_height="33dp"
         android:layout_marginEnd="16dp"

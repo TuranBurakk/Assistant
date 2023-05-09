@@ -37,4 +37,11 @@ abstract class BaseFragment<VB : ViewBinding>(
     fun showToolBar(){
         (activity as MainActivity).showToolbar()
     }
+
+    fun hideBottomBar(){
+        (activity as MainActivity).hideNavigationBar()
+    }
+    fun showBottomBar(){
+        (activity as MainActivity).showNavigationBar()
+    }
 }

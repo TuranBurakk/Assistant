@@ -16,4 +16,7 @@
     <string name="sign_in">Sign in</string>
     <string name="today">Today</string>
     <string name="hide_completed">Hide completed</string>
+    <string name="todo">Todo</string>
+    <string name="calendar">Calendar</string>
+    <string name="accounting">Accounting</string>
 </resources>

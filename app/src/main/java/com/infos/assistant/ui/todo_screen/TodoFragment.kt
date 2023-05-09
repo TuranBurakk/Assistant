@@ -3,6 +3,7 @@ package com.infos.assistant.ui.todo_screen
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.infos.assistant.data.TodoData
 import com.infos.assistant.ui.base.BaseFragment
@@ -23,6 +24,10 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         adapter.setData(viewModel.todoList)
+
+        binding.addTodoButton.setOnClickListener {
+            findNavController().navigate(TodoFragmentDirections.actionTodoFragmentToAddTodoFragment())
+        }
 
     }
 
