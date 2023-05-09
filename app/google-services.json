@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "408326676067",
+    "project_id": "asistant-cfe32",
+    "storage_bucket": "asistant-cfe32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408326676067:android:e8abb4420f41ac6d08a256",
+        "android_client_info": {
+          "package_name": "com.infos.assistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408326676067-mavdt9mfh0q41rvdnbfpplf692412bu6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.infos.assistant",
+            "certificate_hash": "91166be966fe1814353dfcf8834e418236764f4f"
+          }
+        },
+        {
+          "client_id": "408326676067-u6ed1b19hiufglfteg7ngrv1dpog9vmk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLLk5XyMOuAerCIccTWozK2Hp083q0PRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408326676067-3tdq8h4f99e3mflo3qkdegshs0rumljo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

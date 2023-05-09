@@ -19,4 +19,5 @@
     <string name="todo">Todo</string>
     <string name="calendar">Calendar</string>
     <string name="accounting">Accounting</string>
+    <string name="sing_out">Sing out</string>
 </resources>
