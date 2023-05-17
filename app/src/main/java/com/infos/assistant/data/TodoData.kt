@@ -10,6 +10,6 @@ data class TodoData(
     val uuid: UUID = UUID.randomUUID(),
     val title : String?,
     val explanation: String?,
-    val date: Date,
+    val date: Date?,
     var done:Boolean = false
 ):Parcelable
