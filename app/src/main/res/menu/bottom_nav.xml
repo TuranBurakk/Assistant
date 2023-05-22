@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/todoFragment"
+        android:title="@string/todo"/>
+    <item
+        android:title="@string/calendar"
+        android:id="@+id/calendarFragment"/>
+    <item
+        android:title="@string/accounting"
+        android:id="@+id/accountingFragment"/>
+
+</menu>

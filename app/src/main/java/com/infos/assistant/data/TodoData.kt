@@ -5,11 +5,14 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.util.*
 
+
 @Parcelize
 data class TodoData(
-    val uuid: UUID = UUID.randomUUID(),
-    val title : String?,
+    val uuid: String = UUID.randomUUID().toString(),
+    val title: String?,
     val explanation: String?,
-    val date: Date,
-    var done:Boolean = false
-):Parcelable
+    val date: Date?,
+    var done: Boolean = false
+) : Parcelable {
+    constructor() : this(UUID.randomUUID().toString(), null, null, null, false)
+}

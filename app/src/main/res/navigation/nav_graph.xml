@@ -68,7 +68,11 @@
         android:id="@+id/addTodoFragment"
         android:name="com.infos.assistant.ui.add_todo_screen.AddTodoFragment"
         android:label="fragment_add_todo"
-        tools:layout="@layout/fragment_add_todo" />
+        tools:layout="@layout/fragment_add_todo" >
+        <action
+            android:id="@+id/action_addTodoFragment_to_todoFragment"
+            app:destination="@id/todoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.infos.assistant.ui.login_screen.LoginFragment"

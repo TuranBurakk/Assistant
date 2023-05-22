@@ -1,5 +1,7 @@
 package com.infos.assistant.ui.todo_screen
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -7,46 +9,42 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.infos.assistant.data.TodoData
 import com.infos.assistant.data.UserData
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class TodoViewModel @Inject constructor(): ViewModel() {
-    val todoList = ArrayList<TodoData>()
+
+class TodoViewModel : ViewModel() {
+    private val _todo = MutableLiveData<List<TodoData>>()
+    val todo: LiveData<List<TodoData>> = _todo
     private val db by lazy { FirebaseFirestore.getInstance() }
     private val auth by lazy { FirebaseAuth.getInstance() }
+    val todoList = mutableListOf<TodoData>()
 
-    init {
-        getToDo()
-    }
-
-    private fun getToDo(){
-        db.collection("user").document(auth.currentUser!!.uid).get().addOnSuccessListener {
-            val user = it.toObject<UserData>()
-            if (user != null ){
-                for (item in user.Todo){
+    fun getToDo() {
+        db.collection("user").document(auth.currentUser!!.uid).get().addOnSuccessListener { documentSnapshot ->
+            val user = documentSnapshot.toObject<UserData>()
+            if (user != null) {
+                todoList.clear()
+                for (item in user.todo) {
                     val id = item.uuid
                     val title = item.title
                     val explanation = item.explanation
                     val date = item.date
                     val isComplete = item.done
-                    val todo = TodoData(id,title, explanation, date,isComplete)
+                    val todo = TodoData(id, title, explanation, date, isComplete)
                     todoList.add(todo)
                 }
+                _todo.value = todoList
             }
         }
-
-    }
-    fun complete(todo: TodoData){
-        when(todo.done){
-            true -> todo.done = false
-            false -> todo.done = true
-        }
-        db.collection("user").document(auth.currentUser!!.uid).update("done",todo.done)
-    }
-    fun deleteTask(todo: TodoData){
-        db.collection("user").document(auth.currentUser!!.uid).update("todolist",FieldValue.arrayRemove(todo))
     }
 
+    fun complete(todo: TodoData) {
+        todo.done = !todo.done
+        db.collection("user").document(auth.currentUser!!.uid).update("todo", todoList)
+        getToDo()
+    }
 
+    fun deleteTask(todo: TodoData) {
+        db.collection("user").document(auth.currentUser!!.uid).update("todo", FieldValue.arrayRemove(todo))
+        getToDo()
+    }
 }
