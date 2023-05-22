@@ -17,7 +17,7 @@ class AddTodoViewModel@Inject constructor() : ViewModel() {
     private val auth by lazy { FirebaseAuth.getInstance() }
 
     fun addTodo(todo:TodoData, context: Context){
-        db.collection("user").document(auth.currentUser!!.uid).update("todolist",FieldValue.arrayUnion(todo))
+        db.collection("user").document(auth.currentUser!!.uid).update("todo",FieldValue.arrayUnion(todo))
         Toast.makeText(context,"add successful",Toast.LENGTH_LONG).show()
     }
     

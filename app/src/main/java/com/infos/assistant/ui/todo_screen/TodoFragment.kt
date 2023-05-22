@@ -20,17 +20,20 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerView.adapter = adapter
-
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        adapter.setData(viewModel.todoList)
+        viewModel.getToDo()
+
+        viewModel.todo.observe(viewLifecycleOwner){
+            if (it != null){
+                adapter.setData(it)
+            }
+        }
 
         binding.addTodoButton.setOnClickListener {
             findNavController().navigate(TodoFragmentDirections.actionTodoFragmentToAddTodoFragment())
         }
-
     }
-
     override fun completed(todo: TodoData) {
         viewModel.complete(todo)
     }

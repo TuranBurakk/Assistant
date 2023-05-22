@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
         navController = Navigation.findNavController(this,R.id.navHostFragment)
         NavigationUI.setupWithNavController(bottomNavigationView,navController)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.infos.assistant.data.TodoData
 import com.infos.assistant.databinding.FragmentAddTodoBinding
 import com.infos.assistant.ui.base.BaseFragment
@@ -25,13 +26,14 @@ class AddTodoFragment : BaseFragment<FragmentAddTodoBinding>(FragmentAddTodoBind
 
                 if (!binding.todoDesc.text.isNullOrEmpty()){
 
-                    val date = Date(binding.datePicker.year
+                    val date = GregorianCalendar(binding.datePicker.year
                         ,binding.datePicker.month
-                        ,binding.datePicker.dayOfMonth)
+                        ,binding.datePicker.dayOfMonth).time
                     val title = binding.todoET.text.toString()
                     val explanation = binding.todoDetailET.text.toString()
                     val todo = TodoData(title = title, explanation = explanation, date = date)
                     viewModel.addTodo(todo,requireContext())
+                    findNavController().navigate(AddTodoFragmentDirections.actionAddTodoFragmentToTodoFragment())
 
                 }else Toast.makeText(requireContext(),"Explanations cannot be empty",Toast.LENGTH_LONG).show()
 
