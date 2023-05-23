@@ -16,9 +16,11 @@
     <string name="sign_in">Sign in</string>
     <string name="today">Today</string>
     <string name="hide_completed">Hide completed</string>
-    <string name="todo">Todo</string>
-    <string name="calendar">Calendar</string>
-    <string name="accounting">Accounting</string>
+    <string name="Todo">TODO</string>
+    <string name="Calender">CALENDER</string>
+    <string name="Accounting">ACCOUNTING</string>
     <string name="sing_out">Sing out</string>
-    <string name="home">home</string>
+    <string name="home">HOME</string>
+    <string name="amount">Amount</string>
+    <string name="textview">TextView</string>
 </resources>

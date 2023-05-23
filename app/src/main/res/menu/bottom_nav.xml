@@ -2,15 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="@string/home"/>
+        android:title="@string/home"
+        />
     <item
         android:id="@+id/todoFragment"
-        android:title="@string/todo"/>
+        android:title="@string/Todo"/>
     <item
-        android:title="@string/calendar"
+        android:title="@string/Calender"
         android:id="@+id/calendarFragment"/>
     <item
-        android:title="@string/accounting"
+        android:title="@string/Accounting"
         android:id="@+id/accountingFragment"/>
 
 </menu>
