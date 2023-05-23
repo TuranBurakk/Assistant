@@ -2,6 +2,7 @@ package com.infos.assistant
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -17,11 +18,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var toolbar: Toolbar
-
+    private lateinit var totalMoney : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        totalMoney = findViewById(R.id.total_money_tv)
         toolbar = findViewById(R.id.mToolbar)
         setSupportActionBar(toolbar)
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
@@ -47,5 +48,14 @@ class MainActivity : AppCompatActivity() {
 
     fun hideNavigationBar() {
         bottomNavigationView.visibility = View.GONE
+    }
+    fun hideTextview(){
+        totalMoney.visibility = View.GONE
+    }
+    fun showTextview(){
+        totalMoney.visibility = View.VISIBLE
+    }
+    fun changeTextview(amount:Int){
+        totalMoney.text = "Total money: ${amount}"
     }
 }

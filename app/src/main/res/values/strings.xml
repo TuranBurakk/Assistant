@@ -23,4 +23,7 @@
     <string name="home">HOME</string>
     <string name="amount">Amount</string>
     <string name="textview">TextView</string>
+    <string name="expense">expense</string>
+    <string name="Income">Income</string>
+    <string name="description">Description</string>
 </resources>

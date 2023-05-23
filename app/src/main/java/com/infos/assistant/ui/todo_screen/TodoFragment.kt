@@ -16,6 +16,10 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
     private val viewModel: TodoViewModel by viewModels()
     private val adapter by lazy { TodoAdapter(this) }
 
+    override fun onStart() {
+        super.onStart()
+        hideTextview()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

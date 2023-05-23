@@ -20,7 +20,6 @@ class AddTodoFragment : BaseFragment<FragmentAddTodoBinding>(FragmentAddTodoBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.addTodoButton.setOnClickListener {
             if (!binding.todoET.text.isNullOrEmpty()){
 

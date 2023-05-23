@@ -115,6 +115,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun onStart() {
         super.onStart()
         hideToolBar()
+        hideBottomBar()
+        hideTextview()
     }
 
     private fun checkUser(){

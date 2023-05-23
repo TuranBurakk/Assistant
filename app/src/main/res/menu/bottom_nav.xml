@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/homeFragment"
         android:title="@string/home"
@@ -12,6 +14,6 @@
         android:id="@+id/calendarFragment"/>
     <item
         android:title="@string/Accounting"
-        android:id="@+id/accountingFragment"/>
+        android:id="@+id/accountingFragment" />
 
 </menu>
