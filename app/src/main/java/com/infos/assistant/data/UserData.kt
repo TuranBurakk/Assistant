@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class UserData(
     val userName:String? = null,
-    val todo: List<TodoData> = emptyList()
+    val todo: List<TodoData> = emptyList(),
+    val accounting : List<AccountingData> = emptyList(),
 ):Parcelable
