@@ -44,4 +44,13 @@ abstract class BaseFragment<VB : ViewBinding>(
     fun showBottomBar(){
         (activity as MainActivity).showNavigationBar()
     }
+    fun hideTextview(){
+        (activity as MainActivity).hideTextview()
+    }
+    fun showTextview(){
+        (activity as MainActivity).showTextview()
+    }
+    fun changeTextview(amount : Int){
+        (activity as MainActivity).changeTextview(amount)
+    }
 }

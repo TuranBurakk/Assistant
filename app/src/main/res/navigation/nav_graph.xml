@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/addAccountingFragment"
-        android:name="com.infos.assistant.AddAccountingFragment"
+        android:name="com.infos.assistant.ui.add_accounting_screen.AddAccountingFragment"
         android:label="fragment_add_accounting"
         tools:layout="@layout/fragment_add_accounting" />
     <fragment

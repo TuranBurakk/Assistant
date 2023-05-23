@@ -9,4 +9,6 @@ data class AccountingData(
     val amount : Int?,
     val date : Date?,
     val description : String?
-):Parcelable
+):Parcelable{
+    constructor() : this(null,null,null)
+}

@@ -26,7 +26,13 @@ class AccountingAdapter: RecyclerView.Adapter<AccountingAdapter.AccountingHolder
         }
             if (list[position].amount!! < 0){
                 holder.binding.cardView.setCardBackgroundColor(Color.RED)
-            }else holder.binding.cardView.setCardBackgroundColor(Color.GREEN)
+                holder.binding.editButton.setBackgroundColor(Color.RED)
+                holder.binding.deleteButton.setBackgroundColor(Color.RED)
+            }else {
+                holder.binding.cardView.setCardBackgroundColor(Color.GREEN)
+                holder.binding.editButton.setBackgroundColor(Color.GREEN)
+                holder.binding.deleteButton.setBackgroundColor(Color.GREEN)
+            }
     }
 
     override fun getItemCount() = list.size
