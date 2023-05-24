@@ -26,4 +26,6 @@
     <string name="expense">expense</string>
     <string name="Income">Income</string>
     <string name="description">Description</string>
+    <string name="event_title">Event title</string>
+    <string name="add_event">Add Event</string>
 </resources>
