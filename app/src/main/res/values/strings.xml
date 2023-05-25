@@ -28,4 +28,5 @@
     <string name="description">Description</string>
     <string name="event_title">Event title</string>
     <string name="add_event">Add Event</string>
+    <string name="event_description">Event description</string>
 </resources>

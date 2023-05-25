@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
-        android:name="com.infos.assistant.ui.AddEventFragment"
+        android:name="com.infos.assistant.ui.add_event_screen.AddEventFragment"
         android:label="fragment_add_event"
         tools:layout="@layout/fragment_add_event" >
         <action
