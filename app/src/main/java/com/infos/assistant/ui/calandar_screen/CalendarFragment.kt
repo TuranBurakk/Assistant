@@ -1,5 +1,6 @@
 package com.infos.assistant.ui.calandar_screen
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
@@ -22,7 +23,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(FragmentCalendarB
 
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val date = GregorianCalendar(year, month, dayOfMonth).time.toString()
+            val calendar = GregorianCalendar(year, month, dayOfMonth)
+            val format = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale("tr", "TR"))
+            val date = format.format(calendar.time)
             binding.addButton.setOnClickListener {
                 findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToAddEventFragment(date))
             }
