@@ -29,4 +29,5 @@
     <string name="event_title">Event title</string>
     <string name="add_event">Add Event</string>
     <string name="event_description">Event description</string>
+    <string name="you_can_type_here_or_speak">You can type here or speak</string>
 </resources>
