@@ -17,7 +17,7 @@ data class ChatGptData(
     @SerializedName("usage")
     val usage : UsageData,
     @SerializedName("choices")
-    val choices : List<ChoicesData?>?
+    val choices : List<ChoicesData?>
 ): Parcelable
 
 @Parcelize

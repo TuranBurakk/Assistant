@@ -2,7 +2,7 @@ package com.infos.assistant.ui.home_screen
 
 import com.infos.assistant.data.ChatGptData
 import com.infos.assistant.data.remote.RemoteDataSource
-import com.infos.assistant.data.remote.RequestMessage
+import com.infos.assistant.data.remote.RequestData
 import com.infos.assistant.utlis.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,7 +14,7 @@ class HomeUseCase @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) {
 
-    operator fun invoke(message:List<RequestMessage>): Flow<Resource<ChatGptData>> = flow {
+    operator fun invoke(message:RequestData): Flow<Resource<ChatGptData>> = flow {
         try {
             emit(Resource.loading())
             val answer = remoteDataSource.chat(message)

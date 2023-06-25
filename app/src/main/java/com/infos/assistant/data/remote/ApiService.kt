@@ -9,7 +9,8 @@ interface ApiService {
 
     @POST("v1/chat/completions")
     suspend fun chat(
-        @Header("Content-Type")authHeader:String,
+        @Header("Content-Type") contentType: String,
+        @Header("Authorization") apiKey: String,
         @Body request : RequestData
     ):ChatGptData
 
