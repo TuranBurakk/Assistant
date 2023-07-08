@@ -55,6 +55,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         adapter.setData(messageList)
-        println(messageList)
     }
 }

@@ -5,15 +5,19 @@
     <item
         android:id="@+id/homeFragment"
         android:title="@string/home"
+        android:icon="@drawable/ic_baseline_home_24"
         />
     <item
         android:id="@+id/todoFragment"
-        android:title="@string/Todo"/>
+        android:title="@string/Todo"
+        android:icon="@drawable/ic_baseline_work_24"/>
     <item
         android:title="@string/Calender"
-        android:id="@+id/calendarFragment"/>
+        android:id="@+id/calendarFragment"
+        android:icon="@drawable/ic_baseline_edit_calendar_24"/>
     <item
         android:title="@string/Accounting"
-        android:id="@+id/accountingFragment" />
+        android:id="@+id/accountingFragment"
+        android:icon="@drawable/ic_baseline_account_balance_wallet_24"/>
 
 </menu>

@@ -67,7 +67,11 @@
         android:id="@+id/addAccountingFragment"
         android:name="com.infos.assistant.ui.add_accounting_screen.AddAccountingFragment"
         android:label="fragment_add_accounting"
-        tools:layout="@layout/fragment_add_accounting" />
+        tools:layout="@layout/fragment_add_accounting" >
+        <action
+            android:id="@+id/action_addAccountingFragment_to_accountingFragment"
+            app:destination="@id/accountingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
         android:name="com.infos.assistant.ui.add_todo_screen.AddTodoFragment"

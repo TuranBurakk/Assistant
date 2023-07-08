@@ -5,15 +5,17 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.infos.assistant.ui.base.BaseFragment
+import com.infos.assistant.data.AccountingData
 import com.infos.assistant.databinding.FragmentAccountingBinding
+import com.infos.assistant.ui.base.BaseFragment
 
 
-class AccountingFragment : BaseFragment<FragmentAccountingBinding>(FragmentAccountingBinding::inflate) {
+class AccountingFragment : BaseFragment<FragmentAccountingBinding>(FragmentAccountingBinding::inflate),
+IAccountingListener {
 
     private val viewModel : AccountingViewModel by viewModels()
-    private val adapter by lazy { AccountingAdapter() }
-
+    private val adapter by lazy { AccountingAdapter(this) }
+    var total = 0
     override fun onStart() {
         super.onStart()
         showTextview()
@@ -30,15 +32,16 @@ class AccountingFragment : BaseFragment<FragmentAccountingBinding>(FragmentAccou
         viewModel.getAccounting()
         viewModel.accounting.observe(viewLifecycleOwner){accounting ->
             adapter.setData(accounting)
-            var total = 0
             for (data in accounting){
-                var amount = data.amount ?: 0
+                val amount = data.amount ?: 0
                 total += amount
-                changeTextview(amount)
             }
-
-
+            changeTextview(total)
         }
+    }
 
+
+    override fun delete(accounting:AccountingData) {
+       viewModel.deleteAccounting(accounting)
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.infos.assistant.data.AccountingData
 import com.infos.assistant.ui.base.BaseFragment
 import com.infos.assistant.databinding.FragmentAddAccountingBinding
@@ -26,6 +27,7 @@ class AddAccountingFragment : BaseFragment<FragmentAddAccountingBinding>(Fragmen
                 val desc = binding.descEt.text.toString()
                 val accounting = AccountingData(-amount,date,desc)
                 viewModel.addAccounting(accounting,requireContext())
+                findNavController().navigate(AddAccountingFragmentDirections.actionAddAccountingFragmentToAccountingFragment())
             }else Toast.makeText(requireContext(),"Amount cannot be empty",Toast.LENGTH_LONG).show()
         }
 
@@ -38,7 +40,7 @@ class AddAccountingFragment : BaseFragment<FragmentAddAccountingBinding>(Fragmen
                 val desc = binding.descEt.text.toString()
                 val accounting = AccountingData(amount,date,desc)
                 viewModel.addAccounting(accounting,requireContext())
-
+                findNavController().navigate(AddAccountingFragmentDirections.actionAddAccountingFragmentToAccountingFragment())
             }else Toast.makeText(requireContext(),"Amount cannot be empty",Toast.LENGTH_LONG).show()
         }
     }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.infos.assistant.data.AccountingData
@@ -33,5 +34,10 @@ class AccountingViewModel : ViewModel() {
                     _accounting.value = accountingList
                 }
             }
+    }
+
+    fun deleteAccounting(accounting:AccountingData){
+        db.collection("user").document(auth.currentUser!!.uid).update("accounting", FieldValue.arrayRemove(accounting))
+        getAccounting()
     }
 }

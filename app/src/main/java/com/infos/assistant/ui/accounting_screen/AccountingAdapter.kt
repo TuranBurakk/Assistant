@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.infos.assistant.data.AccountingData
 import com.infos.assistant.databinding.AccountingRowBinding
 
-class AccountingAdapter: RecyclerView.Adapter<AccountingAdapter.AccountingHolder>() {
+class AccountingAdapter(
+    private var clickListener: IAccountingListener
+): RecyclerView.Adapter<AccountingAdapter.AccountingHolder>() {
     private var list = emptyList<AccountingData>()
     class AccountingHolder(val binding : AccountingRowBinding): RecyclerView.ViewHolder(binding.root) {
 
@@ -23,6 +25,10 @@ class AccountingAdapter: RecyclerView.Adapter<AccountingAdapter.AccountingHolder
             amountTv.text = list[position].amount.toString()
             descTv.text = list[position].description.toString()
             dateTv.text = list[position].date.toString()
+
+            deleteButton.setOnClickListener {
+                clickListener.delete(list[position])
+            }
         }
             if (list[position].amount!! < 0){
                 holder.binding.cardView.setCardBackgroundColor(Color.RED)
@@ -33,6 +39,8 @@ class AccountingAdapter: RecyclerView.Adapter<AccountingAdapter.AccountingHolder
                 holder.binding.editButton.setBackgroundColor(Color.GREEN)
                 holder.binding.deleteButton.setBackgroundColor(Color.GREEN)
             }
+
+
     }
 
     override fun getItemCount() = list.size
