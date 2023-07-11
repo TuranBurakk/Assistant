@@ -1,5 +1,7 @@
 package com.infos.assistant.ui.todo_screen
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -47,4 +49,26 @@ class TodoViewModel : ViewModel() {
         db.collection("user").document(auth.currentUser!!.uid).update("todo", FieldValue.arrayRemove(todo))
         getToDo()
     }
-}
+
+    fun editTask(todo:TodoData,updateTask:String,context: Context){
+        val userDocumentRef = db.collection("user").document(auth.currentUser!!.uid)
+        db.runTransaction { transaction ->
+            val userSnapshot = transaction.get(userDocumentRef)
+            val user = userSnapshot.toObject<UserData>()
+            val accountingList = user?.todo
+            if (accountingList != null) {
+                val objIndex = accountingList.indexOf(todo)
+                if (objIndex != -1) {
+                    val obj = accountingList[objIndex]
+                    obj.explanation = updateTask
+                    transaction.set(userDocumentRef, user)
+                }
+            }
+        }.addOnSuccessListener {
+            Toast.makeText(context,"Update success", Toast.LENGTH_LONG).show()
+            getToDo()
+        }.addOnFailureListener { exception ->
+            Toast.makeText(context,exception.localizedMessage, Toast.LENGTH_LONG).show()
+        }
+    }
+    }

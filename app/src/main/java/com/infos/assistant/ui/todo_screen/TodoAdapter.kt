@@ -2,6 +2,7 @@ package com.infos.assistant.ui.todo_screen
 
 import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -39,6 +40,21 @@ class TodoAdapter(
             }
             doneBox.setOnClickListener {
                 clickListener.completed(todo)
+            }
+            editButton.setOnClickListener {
+                editButton.visibility = View.GONE
+                doneButton.visibility = View.VISIBLE
+                todoDescTv.visibility = View.GONE
+                editDescEt.visibility = View.VISIBLE
+            }
+
+            doneButton.setOnClickListener {
+                editButton.visibility = View.VISIBLE
+                doneButton.visibility = View.GONE
+                todoDescTv.visibility = View.VISIBLE
+                editDescEt.visibility = View.GONE
+                val updateTask = editDescEt.text.toString()
+                clickListener.edit(todo,updateTask)
             }
         }
 

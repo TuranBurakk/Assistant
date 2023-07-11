@@ -44,4 +44,8 @@ IAccountingListener {
     override fun delete(accounting:AccountingData) {
        viewModel.deleteAccounting(accounting)
     }
+
+    override fun edit(accounting: AccountingData,updatedAmount: Int) {
+        viewModel.editAccounting(accounting,updatedAmount,requireContext())
+    }
 }

@@ -1,5 +1,7 @@
 package com.infos.assistant.ui.accounting_screen
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -39,5 +41,29 @@ class AccountingViewModel : ViewModel() {
     fun deleteAccounting(accounting:AccountingData){
         db.collection("user").document(auth.currentUser!!.uid).update("accounting", FieldValue.arrayRemove(accounting))
         getAccounting()
+
+    }
+
+
+    fun editAccounting(accounting: AccountingData, updatedAmount: Int,context: Context) {
+        val userDocumentRef = db.collection("user").document(auth.currentUser!!.uid)
+        db.runTransaction { transaction ->
+            val userSnapshot = transaction.get(userDocumentRef)
+            val user = userSnapshot.toObject<UserData>()
+            val accountingList = user?.accounting
+            if (accountingList != null) {
+                val objIndex = accountingList.indexOf(accounting)
+                if (objIndex != -1) {
+                    val obj = accountingList[objIndex]
+                    obj.amount = updatedAmount
+                    transaction.set(userDocumentRef, user)
+                }
+            }
+        }.addOnSuccessListener {
+           Toast.makeText(context,"Update success",Toast.LENGTH_LONG).show()
+            getAccounting()
+        }.addOnFailureListener { exception ->
+           Toast.makeText(context,exception.localizedMessage,Toast.LENGTH_LONG).show()
+        }
     }
 }

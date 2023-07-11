@@ -46,4 +46,8 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
        viewModel.deleteTask(todo)
     }
 
+    override fun edit(todo: TodoData, updatedTodo: String) {
+        viewModel.editTask(todo,updatedTodo,requireContext())
+    }
+
 }

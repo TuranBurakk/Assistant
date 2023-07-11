@@ -6,7 +6,7 @@ import java.util.Date
 
 @Parcelize
 data class AccountingData(
-    val amount : Int?,
+    var amount : Int?,
     val date : Date?,
     val description : String?
 ):Parcelable{

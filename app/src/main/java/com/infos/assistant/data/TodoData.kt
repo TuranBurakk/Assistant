@@ -10,7 +10,7 @@ import java.util.*
 data class TodoData(
     val uuid: String = UUID.randomUUID().toString(),
     val title: String?,
-    val explanation: String?,
+    var explanation: String?,
     val date: Date?,
     var done: Boolean = false
 ) : Parcelable {
