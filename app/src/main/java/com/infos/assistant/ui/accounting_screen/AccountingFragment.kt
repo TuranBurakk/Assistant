@@ -15,7 +15,7 @@ IAccountingListener {
 
     private val viewModel : AccountingViewModel by viewModels()
     private val adapter by lazy { AccountingAdapter(this) }
-    var total = 0
+
     override fun onStart() {
         super.onStart()
         showTextview()
@@ -33,10 +33,12 @@ IAccountingListener {
         viewModel.accounting.observe(viewLifecycleOwner){accounting ->
             adapter.setData(accounting)
             for (data in accounting){
+                var total = 0
                 val amount = data.amount ?: 0
                 total += amount
+                changeTextview(total)
             }
-            changeTextview(total)
+
         }
     }
 

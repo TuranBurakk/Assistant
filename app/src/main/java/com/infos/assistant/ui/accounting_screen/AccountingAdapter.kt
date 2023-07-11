@@ -38,7 +38,7 @@ class AccountingAdapter(
             }
 
             doneButton.setOnClickListener {
-                descTv.visibility = View.VISIBLE
+                amountTv.visibility = View.VISIBLE
                 descEt.visibility = View.GONE
                 editButton.visibility = View.VISIBLE
                 doneButton.visibility = View.GONE
