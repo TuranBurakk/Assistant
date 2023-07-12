@@ -1,5 +1,6 @@
 package com.infos.assistant.ui.add_accounting_screen
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -15,33 +16,49 @@ import java.util.*
 class AddAccountingFragment : BaseFragment<FragmentAddAccountingBinding>(FragmentAddAccountingBinding::inflate) {
 
     private val viewModel: AddAccountingViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.expenseButton.setOnClickListener {
-            if (!binding.amountEt.text.isNullOrEmpty()){
-                val date = GregorianCalendar(binding.datePicker.year
-                    ,binding.datePicker.month
-                    ,binding.datePicker.dayOfMonth).time
+            if (!binding.amountEt.text.isNullOrEmpty()) {
+                val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                val date = GregorianCalendar(
+                    binding.datePicker.year,
+                    binding.datePicker.month,
+                    binding.datePicker.dayOfMonth
+                ).time
+
+                val formattedDate = dateFormatter.format(date)
+
                 val amount = binding.amountEt.text.toString().toInt()
                 val desc = binding.descEt.text.toString()
-                val accounting = AccountingData(-amount,date,desc)
-                viewModel.addAccounting(accounting,requireContext())
+                val accounting = AccountingData(-amount, formattedDate, desc)
+                viewModel.addAccounting(accounting, requireContext())
                 findNavController().navigate(AddAccountingFragmentDirections.actionAddAccountingFragmentToAccountingFragment())
-            }else Toast.makeText(requireContext(),"Amount cannot be empty",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(), "Amount cannot be empty", Toast.LENGTH_LONG).show()
+            }
         }
 
         binding.incomeButton.setOnClickListener {
-            if (!binding.amountEt.text.isNullOrEmpty()){
-                val date = GregorianCalendar(binding.datePicker.year
-                    ,binding.datePicker.month
-                    ,binding.datePicker.dayOfMonth).time
+            if (!binding.amountEt.text.isNullOrEmpty()) {
+                val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                val date = GregorianCalendar(
+                    binding.datePicker.year,
+                    binding.datePicker.month,
+                    binding.datePicker.dayOfMonth
+                ).time
+
+                val formattedDate = dateFormatter.format(date)
                 val amount = binding.amountEt.text.toString().toInt()
                 val desc = binding.descEt.text.toString()
-                val accounting = AccountingData(amount,date,desc)
-                viewModel.addAccounting(accounting,requireContext())
+                val accounting = AccountingData(amount, formattedDate, desc)
+                viewModel.addAccounting(accounting, requireContext())
                 findNavController().navigate(AddAccountingFragmentDirections.actionAddAccountingFragmentToAccountingFragment())
-            }else Toast.makeText(requireContext(),"Amount cannot be empty",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(), "Amount cannot be empty", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

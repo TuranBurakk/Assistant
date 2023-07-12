@@ -30,7 +30,8 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
 
         viewModel.todo.observe(viewLifecycleOwner){
             if (it != null){
-                adapter.setData(it)
+              val filterList = viewModel.timeFilter(it)
+              adapter.setData(filterList)
             }
         }
 

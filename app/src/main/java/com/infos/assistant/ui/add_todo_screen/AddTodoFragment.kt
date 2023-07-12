@@ -25,16 +25,16 @@ class AddTodoFragment : BaseFragment<FragmentAddTodoBinding>(FragmentAddTodoBind
 
                 if (!binding.todoDesc.text.isNullOrEmpty()){
 
-                    val date = GregorianCalendar(binding.datePicker.year
-                        ,binding.datePicker.month
-                        ,binding.datePicker.dayOfMonth).time
-                    val title = binding.todoET.text.toString()
-                    val explanation = binding.todoDetailET.text.toString()
-                    val todo = TodoData(title = title, explanation = explanation, date = date)
-                    viewModel.addTodo(todo,requireContext())
-                    findNavController().navigate(AddTodoFragmentDirections.actionAddTodoFragmentToTodoFragment())
-
-                }else Toast.makeText(requireContext(),"Explanations cannot be empty",Toast.LENGTH_LONG).show()
+                    if (!binding.todoDesc.text.isNullOrEmpty()) {
+                        val calendar = GregorianCalendar()
+                        calendar.set(binding.datePicker.year, binding.datePicker.month, binding.datePicker.dayOfMonth)
+                        val date = calendar.time
+                        val title = binding.todoET.text.toString()
+                        val explanation = binding.todoDetailET.text.toString()
+                        val todo = TodoData(title = title, explanation = explanation, date = date)
+                        viewModel.addTodo(todo, requireContext())
+                        findNavController().navigate(AddTodoFragmentDirections.actionAddTodoFragmentToTodoFragment())
+                    } else  Toast.makeText(requireContext(),"Explanations cannot be empty",Toast.LENGTH_LONG).show()
 
                 }else Toast.makeText(requireContext(),"Title cannot be empty",Toast.LENGTH_LONG).show()
         }
@@ -42,5 +42,6 @@ class AddTodoFragment : BaseFragment<FragmentAddTodoBinding>(FragmentAddTodoBind
     }
 
 }
+    }
 
 

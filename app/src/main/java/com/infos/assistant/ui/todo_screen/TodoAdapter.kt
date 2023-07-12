@@ -29,6 +29,7 @@ class TodoAdapter(
         holder.binding.apply {
             todoTitleTv.text = todo.title
             todoDescTv.text = todo.explanation
+
             if (todo.done){
                 doneBox.isChecked = true
                 todoTitleTv.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
