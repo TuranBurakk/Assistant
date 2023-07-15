@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.infos.assistant.ui.base.BaseFragment
+import com.applandeo.materialcalendarview.EventDay
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.infos.assistant.databinding.FragmentCalendarBinding
+import com.infos.assistant.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -25,17 +27,25 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(FragmentCalendarB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.getToDo()
-
-        binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val calendar = GregorianCalendar(year, month, dayOfMonth)
-            val format = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale("tr", "TR"))
-            val date = format.format(calendar.time)
-            binding.addButton.setOnClickListener {
-                findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToAddEventFragment(date))
+        viewModel.todo.observe(viewLifecycleOwner){
+            if (it != null){
+                binding.calendarView.setEvents(it)
             }
         }
+
+        binding.calendarView.setOnDayClickListener(object : OnDayClickListener{
+            override fun onDayClick(eventDay: EventDay) {
+                val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                val date = dateFormatter.format(eventDay.calendar.time)
+                findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToTodoFragment())
+
+                binding.addButton.setOnClickListener {
+                    findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToAddEventFragment(date))
+                }
+            }
+
+        })
 
     }
 }

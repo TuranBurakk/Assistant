@@ -27,7 +27,6 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         viewModel.getToDo()
-
         viewModel.todo.observe(viewLifecycleOwner){
             if (it != null){
               val filterList = viewModel.timeFilter(it)

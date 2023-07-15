@@ -11,7 +11,7 @@ data class TodoData(
     val uuid: String = UUID.randomUUID().toString(),
     val title: String?,
     var explanation: String?,
-    val date: Date?,
+    val date: String?,
     var done: Boolean = false
 ) : Parcelable {
     constructor() : this(UUID.randomUUID().toString(), null, null, null, false)

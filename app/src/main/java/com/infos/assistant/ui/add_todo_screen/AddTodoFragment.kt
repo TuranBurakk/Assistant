@@ -1,5 +1,6 @@
 package com.infos.assistant.ui.add_todo_screen
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,12 +27,16 @@ class AddTodoFragment : BaseFragment<FragmentAddTodoBinding>(FragmentAddTodoBind
                 if (!binding.todoDesc.text.isNullOrEmpty()){
 
                     if (!binding.todoDesc.text.isNullOrEmpty()) {
-                        val calendar = GregorianCalendar()
-                        calendar.set(binding.datePicker.year, binding.datePicker.month, binding.datePicker.dayOfMonth)
-                        val date = calendar.time
+                        val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                        val date = GregorianCalendar(
+                            binding.datePicker.year,
+                            binding.datePicker.month,
+                            binding.datePicker.dayOfMonth
+                        ).time
+                        val formattedDate = dateFormatter.format(date)
                         val title = binding.todoET.text.toString()
                         val explanation = binding.todoDetailET.text.toString()
-                        val todo = TodoData(title = title, explanation = explanation, date = date)
+                        val todo = TodoData(title = title, explanation = explanation, date = formattedDate)
                         viewModel.addTodo(todo, requireContext())
                         findNavController().navigate(AddTodoFragmentDirections.actionAddTodoFragmentToTodoFragment())
                     } else  Toast.makeText(requireContext(),"Explanations cannot be empty",Toast.LENGTH_LONG).show()

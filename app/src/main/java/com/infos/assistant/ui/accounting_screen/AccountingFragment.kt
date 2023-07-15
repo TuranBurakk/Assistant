@@ -32,8 +32,8 @@ IAccountingListener {
         viewModel.getAccounting()
         viewModel.accounting.observe(viewLifecycleOwner){accounting ->
             adapter.setData(accounting)
+            var total = 0
             for (data in accounting){
-                var total = 0
                 val amount = data.amount ?: 0
                 total += amount
                 changeTextview(total)

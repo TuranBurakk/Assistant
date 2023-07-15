@@ -76,9 +76,11 @@ class TodoViewModel : ViewModel() {
     fun timeFilter(list: List<TodoData>) : List<TodoData> {
         val filteredList = mutableListOf<TodoData>()
         val currentTime = Calendar.getInstance().time
+        val dateFormatter = android.icu.text.SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+        val formattedDate = dateFormatter.format(currentTime)
         for (todo in list) {
             val taskTime = todo.date
-            if (taskTime!!.day == currentTime.day) {
+            if (taskTime!! == formattedDate) {
                 filteredList.add(todo)
             }
         }

@@ -9,7 +9,6 @@ import com.infos.assistant.data.TodoData
 import com.infos.assistant.databinding.FragmentAddEventBinding
 import com.infos.assistant.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
@@ -28,9 +27,8 @@ class AddEventFragment : BaseFragment<FragmentAddEventBinding>(FragmentAddEventB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val stringDate = args.date
-        val format = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale("tr", "TR"))
-        val date: Date = format.parse(stringDate) as Date
-        binding.dateTv.text = date.toString()
+        val dateFormatter = android.icu.text.SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+        val formattedDate = dateFormatter.format(stringDate)
         binding.addEventBt.setOnClickListener {
             if (!binding.eventTitleEt.text.isNullOrEmpty()){
 
@@ -39,7 +37,7 @@ class AddEventFragment : BaseFragment<FragmentAddEventBinding>(FragmentAddEventB
                     val title = binding.eventTitleEt.text.toString()
                     val desc = binding.eventDescEt.text.toString()
 
-                    val event = TodoData(title = title, explanation = desc, date = date)
+                    val event = TodoData(title = title, explanation = desc, date = formattedDate)
 
                     viewModel.addEvent(event,requireContext())
 
