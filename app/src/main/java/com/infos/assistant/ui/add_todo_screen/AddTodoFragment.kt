@@ -38,7 +38,9 @@ class AddTodoFragment : BaseFragment<FragmentAddTodoBinding>(FragmentAddTodoBind
                         val explanation = binding.todoDetailET.text.toString()
                         val todo = TodoData(title = title, explanation = explanation, date = formattedDate)
                         viewModel.addTodo(todo, requireContext())
-                        findNavController().navigate(AddTodoFragmentDirections.actionAddTodoFragmentToTodoFragment())
+                        val currentTime = Calendar.getInstance().time
+                        val currentFormattedDate = dateFormatter.format(currentTime)
+                        findNavController().navigate(AddTodoFragmentDirections.actionAddTodoFragmentToTodoFragment(currentFormattedDate))
                     } else  Toast.makeText(requireContext(),"Explanations cannot be empty",Toast.LENGTH_LONG).show()
 
                 }else Toast.makeText(requireContext(),"Title cannot be empty",Toast.LENGTH_LONG).show()

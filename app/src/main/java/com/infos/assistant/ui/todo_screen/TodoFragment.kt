@@ -1,13 +1,16 @@
 package com.infos.assistant.ui.todo_screen
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.infos.assistant.data.TodoData
 import com.infos.assistant.ui.base.BaseFragment
 import com.infos.assistant.databinding.FragmentTodoBinding
+import java.util.*
 
 
 class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::inflate),TaskClickListener {
@@ -15,6 +18,7 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
 
     private val viewModel: TodoViewModel by viewModels()
     private val adapter by lazy { TodoAdapter(this) }
+    private val args: TodoFragmentArgs by navArgs()
 
     override fun onStart() {
         super.onStart()
@@ -25,12 +29,23 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         viewModel.getToDo()
+
+
+
         viewModel.todo.observe(viewLifecycleOwner){
             if (it != null){
-              val filterList = viewModel.timeFilter(it)
-              adapter.setData(filterList)
+                if (args.date == ""){
+                    val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                    val currentTime = Calendar.getInstance().time
+                    val currentFormattedDate = dateFormatter.format(currentTime)
+                    val filterList = viewModel.timeFilter(it,currentFormattedDate)
+                    adapter.setData(filterList)
+                }else{
+                    val filterList = viewModel.timeFilter(it, args.date!!)
+                    adapter.setData(filterList)
+                }
+
             }
         }
 

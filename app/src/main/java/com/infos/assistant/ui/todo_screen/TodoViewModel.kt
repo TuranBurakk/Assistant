@@ -11,7 +11,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.infos.assistant.data.TodoData
 import com.infos.assistant.data.UserData
-import java.util.*
 
 
 class TodoViewModel : ViewModel() {
@@ -73,14 +72,11 @@ class TodoViewModel : ViewModel() {
         }
     }
 
-    fun timeFilter(list: List<TodoData>) : List<TodoData> {
+    fun timeFilter(list: List<TodoData>,date:String) : List<TodoData> {
         val filteredList = mutableListOf<TodoData>()
-        val currentTime = Calendar.getInstance().time
-        val dateFormatter = android.icu.text.SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
-        val formattedDate = dateFormatter.format(currentTime)
         for (todo in list) {
             val taskTime = todo.date
-            if (taskTime!! == formattedDate) {
+            if (taskTime!! == date) {
                 filteredList.add(todo)
             }
         }

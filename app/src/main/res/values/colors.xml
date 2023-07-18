@@ -8,9 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#3478F6</color>
-    <color name="yellow">#FDD835</color>
+    <color name="pink">#FFD1DC</color>
     <color name="toolbar">#FFFF8D</color>
     <color name="red">#C72828</color>
     <color name="green">#63DD20</color>
     <color name="grey">#474747</color>
+    <color name="lavender">#9B9BDA</color>
+
 </resources>

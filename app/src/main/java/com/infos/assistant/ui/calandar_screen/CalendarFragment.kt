@@ -38,7 +38,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(FragmentCalendarB
             override fun onDayClick(eventDay: EventDay) {
                 val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
                 val date = dateFormatter.format(eventDay.calendar.time)
-                findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToTodoFragment())
+                findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToTodoFragment(date))
 
                 binding.addButton.setOnClickListener {
                     findNavController().navigate(CalendarFragmentDirections.actionCalendarFragmentToAddEventFragment(date))
