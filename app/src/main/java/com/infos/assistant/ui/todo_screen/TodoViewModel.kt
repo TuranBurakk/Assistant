@@ -82,6 +82,16 @@ class TodoViewModel : ViewModel() {
         }
         return filteredList
     }
+    fun compliteFilter(list: List<TodoData>, date: String): List<TodoData> {
+        val filteredList = mutableListOf<TodoData>()
+        for (todo in list) {
+            val taskTime = todo.date
+            if (taskTime == date && !todo.done) {
+                filteredList.add(todo)
+            }
+        }
+        return filteredList
+    }
 
     }
 

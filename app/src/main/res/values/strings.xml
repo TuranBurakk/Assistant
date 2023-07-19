@@ -30,4 +30,5 @@
     <string name="add_event">Add Event</string>
     <string name="event_description">Event description</string>
     <string name="you_can_type_here_or_speak">You can type here or speak</string>
+    <string name="show_all_task">Show all task</string>
 </resources>

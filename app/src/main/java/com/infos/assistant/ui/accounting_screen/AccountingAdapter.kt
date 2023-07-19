@@ -1,10 +1,14 @@
 package com.infos.assistant.ui.accounting_screen
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.infos.assistant.R
 import com.infos.assistant.data.AccountingData
 import com.infos.assistant.databinding.AccountingRowBinding
 
@@ -21,6 +25,7 @@ class AccountingAdapter(
         return AccountingHolder(binding)
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: AccountingHolder, position: Int) {
         holder.binding.apply {
             amountTv.text = list[position].amount.toString()
@@ -47,15 +52,16 @@ class AccountingAdapter(
             }
         }
             if (list[position].amount!! < 0){
-                holder.binding.cardView.setCardBackgroundColor(Color.RED)
-                holder.binding.editButton.setBackgroundColor(Color.RED)
-                holder.binding.deleteButton.setBackgroundColor(Color.RED)
-                holder.binding.doneButton.setBackgroundColor(Color.RED)
+                holder.binding.cardView.setCardBackgroundColor(Color.parseColor("#973535"))
+                holder.binding.editButton.setBackgroundColor(Color.parseColor("#973535"))
+                holder.binding.deleteButton.setBackgroundColor(Color.parseColor("#973535"))
+                holder.binding.doneButton.setBackgroundColor(Color.parseColor("#973535"))
             }else {
-                holder.binding.cardView.setCardBackgroundColor(Color.GREEN)
-                holder.binding.editButton.setBackgroundColor(Color.GREEN)
-                holder.binding.deleteButton.setBackgroundColor(Color.GREEN)
-                holder.binding.doneButton.setBackgroundColor(Color.GREEN)
+
+                holder.binding.cardView.setCardBackgroundColor(Color.parseColor("#4E8E2B"))
+                holder.binding.editButton.setBackgroundColor(Color.parseColor("#4E8E2B"))
+                holder.binding.deleteButton.setBackgroundColor(Color.parseColor("#4E8E2B"))
+                holder.binding.doneButton.setBackgroundColor(Color.parseColor("#4E8E2B"))
             }
 
 

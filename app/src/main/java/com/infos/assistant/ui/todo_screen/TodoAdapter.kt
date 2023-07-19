@@ -57,7 +57,10 @@ class TodoAdapter(
                 val updateTask = editDescEt.text.toString()
                 clickListener.edit(todo,updateTask)
             }
+
+
         }
+
 
 
     }

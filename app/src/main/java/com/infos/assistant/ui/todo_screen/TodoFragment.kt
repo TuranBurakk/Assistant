@@ -46,12 +46,57 @@ class TodoFragment : BaseFragment<FragmentTodoBinding>(FragmentTodoBinding::infl
                     adapter.setData(filterList)
                 }
 
+
+            }
+        }
+
+        binding.hideTv.setOnClickListener {
+            binding.hideTv.visibility = View.GONE
+            binding.showTv.visibility = View.VISIBLE
+            viewModel.todo.observe(viewLifecycleOwner){
+                if (it != null){
+                    if (args.date == ""){
+                        val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                        val currentTime = Calendar.getInstance().time
+                        val currentFormattedDate = dateFormatter.format(currentTime)
+                        val filterList = viewModel.compliteFilter(it,currentFormattedDate)
+                        adapter.setData(filterList)
+                    }else{
+                        val filterList = viewModel.compliteFilter(it,args.date!!)
+                        adapter.setData(filterList)
+                    }
+
+
+                }
+            }
+        }
+
+        binding.showTv.setOnClickListener {
+            binding.hideTv.visibility = View.VISIBLE
+            binding.showTv.visibility = View.GONE
+            viewModel.todo.observe(viewLifecycleOwner){
+                if (it != null){
+                    if (args.date == ""){
+                        val dateFormatter = SimpleDateFormat("dd.MM.yyyy", Locale("tr", "TR"))
+                        val currentTime = Calendar.getInstance().time
+                        val currentFormattedDate = dateFormatter.format(currentTime)
+                        val filterList = viewModel.timeFilter(it,currentFormattedDate)
+                        adapter.setData(filterList)
+                    }else{
+                        val filterList = viewModel.timeFilter(it,args.date!!)
+                        adapter.setData(filterList)
+                    }
+
+
+                }
             }
         }
 
         binding.addTodoButton.setOnClickListener {
             findNavController().navigate(TodoFragmentDirections.actionTodoFragmentToAddTodoFragment())
         }
+
+
     }
     override fun completed(todo: TodoData) {
         viewModel.complete(todo)
